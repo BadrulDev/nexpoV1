@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tourism/view/user_profile.dart';
+import 'register_user.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +15,10 @@ class HomePage extends StatelessWidget {
           TextButton(
             onPressed: () {
               // TODO: Add login functionality
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfilePage()),
+              );
             },
             child: const Text(
               'LOGIN',
@@ -21,6 +28,10 @@ class HomePage extends StatelessWidget {
           TextButton(
             onPressed: () {
               // TODO: Add register functionality
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterUserPage()),
+              );
             },
             child: const Text(
               'REGISTER',
@@ -88,18 +99,33 @@ class HomePage extends StatelessWidget {
                       elevation: 2,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          SizedBox(
-                            height: 100,
-                            child: Center(child: Text('Image URL')),
+                        children: [
+                          CarouselSlider(
+                            items: const [
+                              Center(child: Text('Image URL 1')),
+                              Center(child: Text('Image URL 2')),
+                              Center(child: Text('Image URL 3')),
+                            ],
+                            options: CarouselOptions(
+                              height: 100,
+                              autoPlay: true,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0,
+                            ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text('Discover hidden gems in Malaysia'),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Local Guide'),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: const [
+                                Icon(Icons.person, color: Colors.grey),
+                                SizedBox(width: 4),
+                                Text('Local Guide'),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -111,18 +137,33 @@ class HomePage extends StatelessWidget {
                       elevation: 2,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          SizedBox(
-                            height: 100,
-                            child: Center(child: Text('Image URL')),
+                        children: [
+                          CarouselSlider(
+                            items: const [
+                              Center(child: Text('Image URL 1')),
+                              Center(child: Text('Image URL 2')),
+                              Center(child: Text('Image URL 3')),
+                            ],
+                            options: CarouselOptions(
+                              height: 100,
+                              autoPlay: true,
+                              enlargeCenterPage: true,
+                              viewportFraction: 1.0,
+                            ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text('Sustainable tourism tips'),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Travel Enthusiast'),
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: const [
+                                Icon(Icons.person, color: Colors.grey),
+                                SizedBox(width: 4),
+                                Text('Travel Enthusiast'),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -136,25 +177,41 @@ class HomePage extends StatelessWidget {
               // Fascinating Facts Section
               const Text('Fascinating Facts', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
-              Card(
-                elevation: 2,
-                child: ListTile(
-                  title: const Text('Culture Trivia'),
-                  subtitle: const Text('Learn about Malaysia\'s diverse traditions'),
-                  // TODO: Fetch culture trivia from backend
+
+              // Culture Trivia Card with onTap functionality`
+              InkWell(
+                onTap: () {
+                  //Handle for Culture Trivia
+                },
+                child: Card(
+                  elevation: 1,
+                  child: ListTile(
+                    leading: Icon(Icons.space_dashboard, color: Colors.blue), // Space icon
+                    title: const Text('Culture Trivia'),
+                    subtitle: const Text('Learn about Malaysia\'s diverse traditions'),
+                  ),
                 ),
               ),
+
               const SizedBox(height: 8),
-              Card(
-                elevation: 2,
-                child: ListTile(
-                  title: const Text('Nature Wonders'),
-                  subtitle: const Text('Explore Malaysia\'s breathtaking landscapes'),
-                  // TODO: Fetch nature wonders from backend
+
+              // Nature Wonders Card with onTap functionality
+              InkWell(
+                onTap: () {
+                  // Handle the click event for Nature Wonders
+                },
+                child: Card(
+                  elevation: 1,
+                  child: ListTile(
+                    leading: Icon(Icons.landscape, color: Colors.green), // Landscape icon
+                    title: const Text('Nature Wonders'),
+                    subtitle: const Text('Explore Malaysia\'s breathtaking landscapes'),
+                  ),
                 ),
               ),
 
               const SizedBox(height: 16),
+
 
               // Quick Tips Section
               const Text('Quick Tips', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -162,35 +219,48 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Card(
-                      elevation: 2,
-                      child: Column(
-                        children: const [
-                          ListTile(
-                            title: Text('Ticket Discounts'),
-                            // TODO: Fetch ticket discounts from backend
-                          ),
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle click event for Ticket Discounts
+                        // For example, navigate to another page or show a dialog
+                      },
+                      child: Card(
+                        elevation: 2,
+                        child: Column(
+                          children: const [
+                            ListTile(
+                              leading: Icon(Icons.discount, color: Colors.amber),
+                              title: Text('Ticket Discounts', style: TextStyle(fontSize: 12.0)),
+                              // TODO: Fetch ticket discounts from backend
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 2),
                   Expanded(
-                    child: Card(
-                      elevation: 2,
-                      child: Column(
-                        children: const [
-                          ListTile(
-                            title: Text('Sustainability Index'),
-                            // TODO: Fetch sustainability index from backend
-                          ),
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle click event for Sustainability Index
+                        // For example, navigate to another page or show a dialog
+                      },
+                      child: Card(
+                        elevation: 2,
+                        child: Column(
+                          children: const [
+                            ListTile(
+                              leading: Icon(Icons.eco, color: Colors.green),
+                              title: Text('Sustainability Index', style: TextStyle(fontSize: 12.0)),
+                              // TODO: Fetch sustainability index from backend
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-
               const SizedBox(height: 16),
 
               // Create Itinerary Button
@@ -201,7 +271,7 @@ class HomePage extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 16),
                   ),
                   child: const Text(
                     'Create Itinerary',
@@ -221,38 +291,53 @@ class HomePage extends StatelessWidget {
                   child: const Center(child: Text('Explore More Placeholder')),
                 ),
               ),
-
               const SizedBox(height: 16),
 
               // Crowd Insights Section
+              const Text('Crowd Insights', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   Expanded(
                     child: Card(
                       elevation: 2,
                       child: ListTile(
-                        title: const Text('Current Visitors'),
-                        subtitle: const Text('500'),
+                        title: Text(
+                          'Current Visitors',
+                          style: TextStyle(fontSize: 14.0),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text('500', style: TextStyle(fontSize: 16.0)),
+                            SizedBox(height: 4.0),
+                            Text('+20%', style: TextStyle(color: Colors.green),)
+                          ],
+                        ),
                         // TODO: Fetch current visitor count from backend
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 6),
                   Expanded(
                     child: Card(
                       elevation: 2,
                       child: ListTile(
                         title: const Text('Peak Hours'),
-                        subtitle: const Text('11 AM - 3 PM'),
+                        subtitle: const Text(
+                          '11 AM - 3 PM',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         // TODO: Fetch peak hours from backend
                       ),
                     ),
                   ),
                 ],
               ),
-
               const SizedBox(height: 16),
-
               // Languages Section
               const Text('Languages', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
