@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tourism/view/login_user.dart';
 import 'package:tourism/view/user_profile.dart';
 import 'register_user.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'calendar_main.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
               // TODO: Add login functionality
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => UserProfilePage()),
+                MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
             child: const Text(
@@ -268,6 +270,10 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // TODO: Add itinerary creation functionality
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CalendarMainPage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
