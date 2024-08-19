@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourism/view/forgot_pass.dart';
+import 'package:tourism/view/home_page_login.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -61,6 +62,10 @@ class LoginPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // TODO: Implement login functionality
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePageLogin()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black, // Button color
